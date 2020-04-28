@@ -2,7 +2,7 @@
 
 - 2020 - 1 React toy project
 
-- Test : [github page](https://euidong.github.io/mine-collector)
+- Test : https://euidong.github.io/mine-collector
 
 - Dockerhub : https://hub.docker.com/repository/docker/justicedong/mine-collector/general
 
