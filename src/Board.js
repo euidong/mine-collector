@@ -230,6 +230,7 @@ function Board () {
                     onAfterOpen={afterOpenModal}>
                     <p>축하합니다. {completeTime.current}초 걸렸습니다.</p>
                 </Modal>
+                <p>Good</p>
             </div>
         </>
     );
