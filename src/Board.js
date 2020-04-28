@@ -11,7 +11,7 @@ function Td (props) {
     const nearMineNum = props.nearMineNum;
     const mined = props.mined;
     const [ mark, setMark ] = useState("notting");
-    
+
     const clickHandler = (e) => {
         e.preventDefault();
         if (mark === "notting") {
@@ -29,7 +29,7 @@ function Td (props) {
         else if (mark === "flag") {
             setMark("notting");
             if (mined)
-                props.upCurrent(-1);  
+                props.upCurrent(-1);
         }
         else if (mark === "mine") {
             // nothing
@@ -69,7 +69,7 @@ function Td (props) {
             content = "💣";
         return content;
     }
-    
+
     return (<td onClick={clickHandler} onContextMenu={contextmenuHandler}>{showContent(mark)}</td>);
 }
 
@@ -78,16 +78,16 @@ function Tr (props) {
     for (let i = 1;i < props.width + 1; i++) {
         tdIdx[i] = i;
     }
-    const tds = tdIdx.map((idx) => 
-        (<Td key={idx.toString()} 
-            nearMineNum={props.nearMineNum[idx-1]} 
-            mined={props.mined[idx-1]} 
+    const tds = tdIdx.map((idx) =>
+        (<Td key={idx.toString()}
+            nearMineNum={props.nearMineNum[idx-1]}
+            mined={props.mined[idx-1]}
             upCurrent={props.upCurrent}/>)
         );
     return (
         <>
-            <tr> 
-                {tds} 
+            <tr>
+                {tds}
             </tr>
         </>
     );
@@ -117,21 +117,21 @@ function Table (props) {
     useEffect(() => {
         if (current === props.height * props.width) {
             props.openModal();
-        } 
+        }
     }, [current, props]);
 
-    
+
 
     const trs = trIdx.map((idx) => <Tr key={idx.toString()} width={props.width} nearMineNum={nearMineNum[idx-1]} mined={mined[idx-1]} upCurrent={upCurrent}/> );
     return (
         <>
-            <table> 
+            <table>
                 <tbody>
                     {trs}
                 </tbody>
             </table>
         </>
-    );    
+    );
 }
 
 
@@ -184,7 +184,7 @@ const initialBoard = (HEIGHT, WIDTH, MINE_PERCENT) => {
             }
             lineMines.push(isMine);
         }
-        mined.push(lineMines);    
+        mined.push(lineMines);
     }
     return [nearMineNum, mined];
 }
@@ -192,7 +192,7 @@ const initialBoard = (HEIGHT, WIDTH, MINE_PERCENT) => {
 Modal.setAppElement('#root');
 
 function Board () {
-    
+
     const [ time, setTime ] = useState(0);
     const completeTime = useRef();
     const [modalIsOpen, setIsOpen] = useState(false);
@@ -205,7 +205,7 @@ function Board () {
     const closeModal = () => {
         setIsOpen(false);
     };
-    
+
     const MINE_PERCENT = 0.1;
     const HEIGHT = 10;
     const WIDTH = 10;
@@ -230,7 +230,6 @@ function Board () {
                     onAfterOpen={afterOpenModal}>
                     <p>축하합니다. {completeTime.current}초 걸렸습니다.</p>
                 </Modal>
-                <p>Good</p>
             </div>
         </>
     );
