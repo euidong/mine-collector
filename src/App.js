@@ -5,7 +5,6 @@ import ResultModal from './components/ResultModal';
 import SetGame from "./components/SetGame";
 
 function App() {
-
   // get time.
   const time = useRef(null);
   const clearTimer = useRef(null);
@@ -25,7 +24,7 @@ function App() {
   return (
     <div className="App">
       <Timer time={time} clearTimer={clearTimer}/>
-      <Board modalOpen={modalOpen} HEIGHT={HEIGHT} WIDTH={WIDTH} MINE_PERCENT={MINE_PERCENT}/>
+      <Board modalOpen={modalOpen} HEIGHT={HEIGHT} WIDTH={WIDTH} MINE_PERCENT={MINE_PERCENT} />
       <SetGame setHEIGHT={setHEIGHT} setWIDTH={setWIDTH} setMINE_PERCENT={setMINE_PERCENT} />
       <ResultModal time={time.current} modalIsOpen={modalIsOpen} setModalOpen={setModalOpen} />
     </div>

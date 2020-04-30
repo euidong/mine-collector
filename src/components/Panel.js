@@ -2,26 +2,7 @@ import React from "react";
 
 
 function Panel (props) {
-    const { low, col, under, setMark, mark } = props;
-    const showContent = () => {
-        let content;
-        switch(mark[low][col]) {
-            case "notting":
-                content=<div className={'NotClick'}></div>;
-                break;
-            case "clicked":
-                content=under[low][col];
-                if (content === 0)
-                    content = <div className={'Zero'}></div>;
-                break;
-            case "contextMenued":
-                content="🚩";
-                break;
-            default:
-                break;
-        }
-        return content;
-    }
+    const { low, col, setMark, showContent } = props;
 
     const clickHandler = (e) => {
         e.preventDefault();
@@ -35,7 +16,7 @@ function Panel (props) {
 
     return  <>
                 <td onClick={clickHandler} onContextMenu={contextmenuHandler}>
-                    {showContent()}
+                    {showContent(low, col)}
                 </td>
             </>;
 }

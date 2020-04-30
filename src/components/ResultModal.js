@@ -8,7 +8,6 @@ function ResultModal(props) {
     const closeModal = () => {
         setModalOpen(false);
     };
-    console.log(modalIsOpen);
     return (
         <Modal className={'Modal'} isOpen={modalIsOpen}
                onRequestClose={closeModal}>

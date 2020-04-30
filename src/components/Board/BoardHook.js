@@ -1,13 +1,44 @@
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-const initialBoard = (HEIGHT, WIDTH, MINE_PERCENT) => {
-    const mined = Array(HEIGHT).fill(null).map(() => (Array(WIDTH).fill(false)));
-    const nearMineNum = Array(HEIGHT).fill(null).map(() => (Array(WIDTH).fill(0)));
-    
+const constructArray = (HEIGHT, WIDTH, fill) => {
+    const ary = [];
+    for (let i = 0 ; i < HEIGHT; i++) {
+        ary.push([]);
+        for (let j = 0 ; j < WIDTH; j++) {
+            ary[i].push(fill);
+        }
+    }
+    return ary;
+}
+
+const useScore = (initValue) => {
+    const [score, setScore] = useState(initValue);
+    const upScore = (value) => {
+        setScore(score + value);
+    }
+    return [score, upScore, setScore];
+}
+
+const initialUnder = (HEIGHT, WIDTH, MINE_PERCENT) => {
+    // const mined = Array.from(Array(HEIGHT), () => Array(WIDTH).fill(false));
+    // const nearMineNum = Array.from(Array(HEIGHT), () => Array(WIDTH).fill(0));
+    const mined = [];
+    const nearMineNum = [];
+    for (let i = 0 ; i < HEIGHT; i++) {
+        mined.push([]);
+        nearMineNum.push([]);
+        for (let j = 0 ; j < WIDTH; j++) {
+            mined[i].push(false);
+            nearMineNum[i].push(0);
+        }
+    }
+
+    let mineCount = 0;
     for (let i = 0 ; i < HEIGHT; i++) {
         for (let j = 0 ; j < WIDTH ; j++) {
             mined[i][j] = Math.random() < MINE_PERCENT;
             if (mined[i][j]) {
+                mineCount++;
                 // 상
                 if (i > 0)
                     nearMineNum[i-1][j]++;
@@ -36,7 +67,6 @@ const initialBoard = (HEIGHT, WIDTH, MINE_PERCENT) => {
         }
     }
 
-    
     for (let i = 0 ; i < HEIGHT; i++) {
         for (let j = 0 ; j < WIDTH; j++) {
             if (mined[i][j])
@@ -44,21 +74,23 @@ const initialBoard = (HEIGHT, WIDTH, MINE_PERCENT) => {
         }
     }
 
-    return nearMineNum;
-}
-
-const useScore = (initValue) => {
-    const [score, setScore] = useState(initValue);
-    const upScore = (value) => {
-        setScore(score + value);
-    }
-    return [score, upScore];
+    return [nearMineNum, mineCount];
 }
 
 const useMark = (HEIGHT, WIDTH, MINE_PERCENT) => {
-    const [ mark, setMarking ] = useState(Array(HEIGHT).fill(null).map(() => Array(WIDTH).fill("notting")));
-    const [ score, upScore ] = useScore(0);
-    const [ under ] = useState(initialBoard(HEIGHT, WIDTH, MINE_PERCENT));
+    const [ under, setUnder ] = useState(constructArray(HEIGHT, WIDTH, 0));
+    const [ mark, setMarking ] = useState(constructArray(HEIGHT, WIDTH, "notting"));
+    const [ score, upScore, setScore ] = useScore(0);
+    const [ mineCount, setMineCount ] = useState(0);
+    useEffect(() => {
+        const [ newUnder, newMineCount ] = initialUnder(HEIGHT, WIDTH, MINE_PERCENT);
+        setMineCount(newMineCount);
+        setUnder(newUnder);
+        setMarking(constructArray(HEIGHT, WIDTH, "notting"));
+        setScore(0);
+    }, [HEIGHT, WIDTH, MINE_PERCENT, setScore ])
+
+
     const setMark = (low, col, event) => {      
         const ary = [];
         for (let i = 0 ; i < mark.length; i++) {
@@ -147,8 +179,34 @@ const useMark = (HEIGHT, WIDTH, MINE_PERCENT) => {
             }         
         }
         setMarking(copy);
+        return;
     };
-    return [ mark, score, under, setMark ];
+
+    const showContent = (low, col) => {
+        let content;
+        try {
+            switch(mark[low][col]) {
+                case "notting":
+                    content=<div className={'NotClick'}></div>;
+                    break;
+                case "clicked":
+                    content=under[low][col];
+                    if (content === 0)
+                        content = <div className={'Zero'}></div>;
+                    break;
+                case "contextMenued":
+                    content="🚩";
+                    break;
+                default:
+                    break;
+            }
+        }
+        catch {
+            content = "notting";
+        }
+        return content;
+    }
+    return [ score, mineCount, setMark, showContent ];
 }
 
 export { useScore, useMark };

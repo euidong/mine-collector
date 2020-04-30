@@ -13,9 +13,9 @@ function SetGame (props) {
     }
     return (
     <div className={'SetGame'}>
-        <label>세로<input type="number" placeholder="10" onChange={HEIGHTChange} max="15" readOnly></input></label>
-        <label>가로<input type="number" placeholder="10" onChange={WIDTHChange} max="15" readOnly></input></label>
-        <label>지뢰 발생률<input type="number" placeholder="0.1" onChnage={MINE_PERCENTChange} max="1" readOnly></input></label>
+        <label>세로<input type="number" placeholder="10" onChange={HEIGHTChange} max="15"></input></label>
+        <label>가로<input type="number" placeholder="10" onChange={WIDTHChange} max="15"></input></label>
+        <label>지뢰 발생률<input type="number" placeholder="0.1" onChange={MINE_PERCENTChange} max="1"></input></label>
     </div>);    
 }
 
