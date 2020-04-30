@@ -15,7 +15,7 @@ function Board (props) {
     return (
         <>
             <div className={'Board'}>
-                <h1><span>💣</span> : {mineCount}</h1>
+                <h1><span role="img" aria-label="boom">💣</span> : {mineCount}</h1>
                 <Table setMark={setMark} showContent={showContent} HEIGHT={HEIGHT} WIDTH={WIDTH}/>
             </div>
         </>
