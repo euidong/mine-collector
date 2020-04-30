@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/mine-collector/static/css/main.f9d9122e.chunk.css",
-    "main.js": "/mine-collector/static/js/main.9d810d43.chunk.js",
-    "main.js.map": "/mine-collector/static/js/main.9d810d43.chunk.js.map",
+    "main.js": "/mine-collector/static/js/main.f644342e.chunk.js",
+    "main.js.map": "/mine-collector/static/js/main.f644342e.chunk.js.map",
     "runtime-main.js": "/mine-collector/static/js/runtime-main.98785882.js",
     "runtime-main.js.map": "/mine-collector/static/js/runtime-main.98785882.js.map",
     "static/js/2.624bdd01.chunk.js": "/mine-collector/static/js/2.624bdd01.chunk.js",
     "static/js/2.624bdd01.chunk.js.map": "/mine-collector/static/js/2.624bdd01.chunk.js.map",
     "index.html": "/mine-collector/index.html",
-    "precache-manifest.9f8b434bffd26138e991a3c048ca5e52.js": "/mine-collector/precache-manifest.9f8b434bffd26138e991a3c048ca5e52.js",
+    "precache-manifest.58c7f6bc85de5b8ef2004b3cb6b308e0.js": "/mine-collector/precache-manifest.58c7f6bc85de5b8ef2004b3cb6b308e0.js",
     "service-worker.js": "/mine-collector/service-worker.js",
     "static/css/main.f9d9122e.chunk.css.map": "/mine-collector/static/css/main.f9d9122e.chunk.css.map",
     "static/js/2.624bdd01.chunk.js.LICENSE.txt": "/mine-collector/static/js/2.624bdd01.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.98785882.js",
     "static/js/2.624bdd01.chunk.js",
     "static/css/main.f9d9122e.chunk.css",
-    "static/js/main.9d810d43.chunk.js"
+    "static/js/main.f644342e.chunk.js"
   ]
 }
