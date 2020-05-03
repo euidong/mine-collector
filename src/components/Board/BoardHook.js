@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 const constructArray = (HEIGHT, WIDTH, fill) => {
     const ary = [];
@@ -82,6 +82,8 @@ const useMark = (HEIGHT, WIDTH, MINE_PERCENT) => {
     const [ mark, setMarking ] = useState(constructArray(HEIGHT, WIDTH, "notting"));
     const [ score, upScore, setScore ] = useScore(0);
     const [ mineCount, setMineCount ] = useState(0);
+    const clickState = useRef('click');
+
     useEffect(() => {
         const [ newUnder, newMineCount ] = initialUnder(HEIGHT, WIDTH, MINE_PERCENT);
         setMineCount(newMineCount);
@@ -99,7 +101,7 @@ const useMark = (HEIGHT, WIDTH, MINE_PERCENT) => {
         const copy = ary.map((idx) => mark[idx].slice(0));
         
 
-        if (event === "clicked") {
+        if (event === "clicked" && clickState.current === "click") {
             let count = 0;
             switch(mark[low][col]) {
                 case "notting":
@@ -159,20 +161,16 @@ const useMark = (HEIGHT, WIDTH, MINE_PERCENT) => {
                     break;
             }
         }
-        else if (event === "contextMenued") {
+        else if (event === "contextMenued" || (event === "clicked" && clickState.current === "contextMenu")) {
             switch(mark[low][col]) {
                 case "notting":
                     copy[low][col] = "contextMenued";
-                    if (under[low][col] === "💣")
-                        upScore(1);
                     break;
                 case "clicked":
                     // do notting
                     break;
                 case "contextMenued":
                     copy[low][col] = "notting";
-                    if (under[low][col] === "💣")
-                        upScore(-1);
                     break;
                 default:
                     break;
@@ -206,7 +204,7 @@ const useMark = (HEIGHT, WIDTH, MINE_PERCENT) => {
         }
         return content;
     }
-    return [ score, mineCount, setMark, showContent ];
+    return [ score, mineCount, clickState, setMark, showContent ];
 }
 
 export { useScore, useMark };
