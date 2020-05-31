@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/mine-collector/static/css/main.52154d72.chunk.css",
-    "main.js": "/mine-collector/static/js/main.1cc3d10b.chunk.js",
-    "main.js.map": "/mine-collector/static/js/main.1cc3d10b.chunk.js.map",
-    "runtime-main.js": "/mine-collector/static/js/runtime-main.98785882.js",
-    "runtime-main.js.map": "/mine-collector/static/js/runtime-main.98785882.js.map",
-    "static/js/2.624bdd01.chunk.js": "/mine-collector/static/js/2.624bdd01.chunk.js",
-    "static/js/2.624bdd01.chunk.js.map": "/mine-collector/static/js/2.624bdd01.chunk.js.map",
+    "main.js": "/mine-collector/static/js/main.b00367a2.chunk.js",
+    "main.js.map": "/mine-collector/static/js/main.b00367a2.chunk.js.map",
+    "runtime-main.js": "/mine-collector/static/js/runtime-main.f6dfed9e.js",
+    "runtime-main.js.map": "/mine-collector/static/js/runtime-main.f6dfed9e.js.map",
+    "static/js/2.631dc235.chunk.js": "/mine-collector/static/js/2.631dc235.chunk.js",
+    "static/js/2.631dc235.chunk.js.map": "/mine-collector/static/js/2.631dc235.chunk.js.map",
     "index.html": "/mine-collector/index.html",
-    "precache-manifest.88baae16bcf6c80ab8fdd0c6b27a25fb.js": "/mine-collector/precache-manifest.88baae16bcf6c80ab8fdd0c6b27a25fb.js",
+    "precache-manifest.82c9a4c5b590670623fcc9f2678286d6.js": "/mine-collector/precache-manifest.82c9a4c5b590670623fcc9f2678286d6.js",
     "service-worker.js": "/mine-collector/service-worker.js",
     "static/css/main.52154d72.chunk.css.map": "/mine-collector/static/css/main.52154d72.chunk.css.map",
-    "static/js/2.624bdd01.chunk.js.LICENSE.txt": "/mine-collector/static/js/2.624bdd01.chunk.js.LICENSE.txt"
+    "static/js/2.631dc235.chunk.js.LICENSE.txt": "/mine-collector/static/js/2.631dc235.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.98785882.js",
-    "static/js/2.624bdd01.chunk.js",
+    "static/js/runtime-main.f6dfed9e.js",
+    "static/js/2.631dc235.chunk.js",
     "static/css/main.52154d72.chunk.css",
-    "static/js/main.1cc3d10b.chunk.js"
+    "static/js/main.b00367a2.chunk.js"
   ]
 }
