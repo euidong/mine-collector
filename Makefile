@@ -3,5 +3,5 @@ ifndef TAG
 endif
 
 build:
-  docker build .
-  docker push justicedong/mine-collector:$(TAG)
+	docker build .
+	docker push justicedong/mine-collector:$(TAG)
