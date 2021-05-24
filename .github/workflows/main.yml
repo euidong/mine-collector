@@ -1,35 +1,19 @@
-name: React build
-on: 
-  push:
-    branches:
-      - master
-
+name: Build and Deploy
+on: [push]
 jobs:
-    build:
-        name: react build
-        runs-on: ubuntu-18.04
-        steps:
-            - name: Checkout source code
-              uses: actions/checkout@master
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2.3.1
 
-            - name: Cache node modules
-              uses: actions/cache@v1
-              with:
-                path: node_modules
-                key: ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}
-                restor-keys: |
-                  ${{ runner.OS }}-build-
-                  ${{ runner.OS }}-
+      - name: Install and Build 🔧 # This example project is built using npm and outputs the result to the 'build' folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.
+        run: |
+          npm install
+          npm run build
 
-            - name: Install Dependencies
-              run: npm install
-
-            - name: Build
-              run: npm run build
-              
-            - name: Deploy
-              uses: JamesIves/github-pages-deploy-action@releases/v3
-              with:
-                ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-                BRANCH: gh-pages # The branch the action should deploy to.
-                FOLDER: build 
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@4.1.3
+        with:
+          branch: gh-pages # The branch the action should deploy to.
+          folder: build # The folder the action should deploy.
